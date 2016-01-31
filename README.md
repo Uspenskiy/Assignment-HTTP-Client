@@ -1,24 +1,24 @@
-## Module #3, Assignment 1: Food 2 Fork HTTP API Interface
+## Модуль #3, Задание 1: Food 2 Fork HTTP API Interface
 
-The purpose of this assignment is to implement a source of data -- for use in an MVC Model class implementation.
+Целью данного задания явлаеться реальзация источника данных для использывания MVC Model class будушего приложения.
 
-The functional goal is to implement a restful-flavored API client for `http://food2fork.com/about/api` to return JSON documents containing recipe information.
+Функциональня цель явлаеться реализация restful API клиента для сервиса `http://food2fork.com/about/api` который возвраешет  JSON данные содержашие рецепт.
 
-### Functional Requirements
+### Функциональные требования
 
-1. Implement a Ruby class that will 
+1. Реализовать класс который:
 
-    * accept a keyword search term
-    * forward the keyword search term according to the `http://food2fork.com/about/api` interface definition using the HTTParty API
-    * return the JSON document containing recipe information provided by `http://food2fork.com/about/api`
+    * ишет по ключевым словам
+    * передает ключевое слово в `http://food2fork.com/about/api` с использыванием HTTParty API
+    * возврашает JSON документ содеражий информацию о рецепте с сервиса http://food2fork.com/about/api
 
-### Getting Started
+### 
 
-0. Sign up for a Food 2 Fork account at `http://food2fork.com/about/api`. The free plan will give you 500 requests per day. When you sign up, you will need to use an "API Key" available on your "API Admin" page.
+0. Зарегестрироваться ( создать аккаунт) в Food 2 Fork account at `http://food2fork.com/about/api`. Выбрать бесплатны план для получения 500 запросов в день. Когда вы зайдете необходимо вам будет доступен "API Key" на админской странице.
 
-    * define an environment variable (FOOD2FORK_KEY) to store your API Key
+    * определить переменну окружения(FOOD2FORK_KEY) хранашую ваш API Key
 
-1. Download and extract the starter set of boostrap files from (URL).
+1. Скачать и распокавть стартовый набор начальных файлов.
 
     ```shell
     --- student-start
@@ -39,8 +39,8 @@ The functional goal is to implement a restful-flavored API client for `http://fo
     not modify anything in this directory
     * chocolate_recipes.json - used for off-line unit testing by rspec tests
 
-2. Install the following gems used by the rspec unit tests. You may have some of these already installed.
-The last gem is used for testing HTTP calls without using the live `http://food2fork.com/` site.
+2. Установить следуюшие gems для использывания юнитестирования ( rspec ). Может быть некоторые уже установленны.
+Последний gem используеться для тестирования HTTP вызовов без использования настояшего сайта `http://food2fork.com/`.
 
     ```shell
     $ gem install rspec
@@ -48,14 +48,14 @@ The last gem is used for testing HTTP calls without using the live `http://food2
     $ gem install webmock
     ```
 
-3. Read thru the Food2Fork and HTTParty documentation.
+3. Прочитай документацию Food2Fork и HTTParty.
 
-    * HTTParty API document is located at `https://github.com/jnunemaker/httparty`
-    * Food2Fork interface definition is located at `http://food2fork.com/about/api`
+    * HTTParty API документация находиться по адресу `https://github.com/jnunemaker/httparty`
+    * Food2Fork описание интерфейса находиться по адресу `http://food2fork.com/about/api`
 
-4. Implement the Ruby class in a file called `module3_1_assignment.rb`.
+4. Реализовать Ruby класс с именем `module3_1_assignment.rb`.
 
-5. Run the rspec test(s) to receive feedback.  If you copy/move them,
+5. Запустить rspec тесты и получить отклик. Если вы скопируете/переместите  If you copy/move them,
 be sure to include the important .rspec hidden file. All tests will
 (obviously) fail until you complete the specified solution.
 
@@ -168,7 +168,7 @@ be sure to include the important .rspec hidden file. All tests will
     rspec ./spec/recipe_spec.rb:48 # Recipe Chocolate Search sample
     ```
 
-6. Run the `solution.rb` Ruby script to execute a sample call.
+6. Запустите `solution.rb` Ruby скрипт и получите вызов.
 
     ```ruby
     require_relative "module3_1_assignment"
@@ -176,28 +176,28 @@ be sure to include the important .rspec hidden file. All tests will
     puts Recipe.for("chocolate")
     ```
 
-### Technical Requirements
+### Технические требования
 
-1. Define an environment variable called FOOD2FORK_KEY that stores the value of your API Key from the `food2fork.com` admin page when you signed up for an account.
+1. Определить переменную окружения FOOD2FORK_KEY которая хронит ваш API Key от `food2fork.com`.
 
-2. Implement a `Recipe` class that will implement the HTTP API to `http://food2fork.com/about/api`.
-The unit tests will expect a class by that exact name.
+2. Реализовать `Recipe` класс который реализует the HTTP API к `http://food2fork.com/about/api`.
+Юнитесты  The unit tests will expect a class by that exact name.
 
-3. The `Recipe` class should
+3. Класс `Recipe` должен
 
-    * be implemented in a file called `module3_1_assignment.rb`. The unit tests will expect a file by that name.
-    * import the HTTParty mixin
-    * define a base_uri to use `http://food2fork.com/api`
-    * define a default query param of `key` for all HTTP GET
-    requests whose value is equal to value of the environment variable FOOD2FORK_KEY.
-    * specify the desired format as `json`
-    * specify all the above using legal Ruby syntax
+    * реализовыван в файле `module3_1_assignment.rb`. Фаил юни тестов должен иметь тоже имя.
+    * импортировать HTTParty миксин
+    * определен base_uri для использывания `http://food2fork.com/api`
+    * определен значения по умлочанию параметров запросов `key` для всех HTTP GET
+    запросы чьи значения равны переменной окружения FOOD2FORK_KEY.
+    * указать тебуемый формат `json`
+    * указать все выше описываемое Ruby синтаксисом
 
-4. The `Recipe` class must have a `for` class method that 
+4.  Класс `Recipe` должен иметь метод `for` который 
 
-    * accepts a keyword for a search term
-    * issues an HTTP GET request using the HTTParty gem
-    * the HTTP GET request must have the "q=keyword" query argument and query "/search" route
+    * Принимает ключевое слово для поискового запроса
+    * Отправлять HTTP GET запросы с использывание gem-a HTTParty
+    * HTTP GET запросы должны иметь "q=ключевое слово" query argument and query "/search" route
     * returns the JSON payload document supplied in the `recipes` element of the hash returned by HTTParty
 
 ### Self Grading/Feedback
@@ -252,9 +252,9 @@ $ ruby solution.rb
 "social_rank"=>99.99999999990415, "publisher_url"=>"http://www.elanaspantry.com"}
 ```
 
-### Submission
+### 
 
-There is no submission required for this assignment but the 
+ There is no submission required for this assignment but the 
 implementation will be part of a follow-on assignment so 
 please complete this to the requirements of the unit test.
 
